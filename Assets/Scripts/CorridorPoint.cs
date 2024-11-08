@@ -12,7 +12,7 @@ public class CorridorPoint : MonoBehaviour
     public virtual void OnPlayerArrive(PlayerMovement player)
     {
 
-        print(gridPosition);
+
 
     }
 

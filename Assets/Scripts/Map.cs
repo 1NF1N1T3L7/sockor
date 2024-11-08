@@ -11,21 +11,30 @@ public class Map : MonoBehaviour
 
     public PlayerMovement player;
 
+    public ChasingEnemy enemy;
+
     public GameObject lineObject;
+
+    public GameObject killObject;
+
+    public float enemyDelay = 2f;
 
     [HideInInspector]
     public List<GameObject> lines = new List<GameObject>();
 
 
 
-    private void Start()
+    private IEnumerator Start()
     {
         player.transform.position = playerStart.transform.position;
         player.ReadyPlayer(playerStart);
+        yield return new WaitForSeconds(enemyDelay);
+        enemy.StartChasing(playerStart, player);
+
     }
     public void CreateMap()
     {
-        for (int i = lines.Count-1; i > 0; i--)
+        for (int i = lines.Count - 1; i > 0; i--)
         {
 
             DestroyImmediate(lines[i]);
@@ -51,6 +60,8 @@ public class Map : MonoBehaviour
         foreach (var endPoint in point.connectedPoints)
         {
 
+            var endObject = endPoint is KillPoint ? killObject : lineObject;
+
             float deltaX = (endPoint.transform.position.x - point.transform.position.x);
             float deltaZ = (endPoint.transform.position.z - point.transform.position.z);
             float absX = Mathf.Abs(deltaX);
@@ -65,26 +76,46 @@ public class Map : MonoBehaviour
 
                 for (int i = start; i <= end; i++)
                 {
-                    print(i);
-                    lines.Add(Instantiate(lineObject,
+
+                    if (i == end)
+                    {
+                        lines.Add(Instantiate(endObject,
                             new Vector3(i, point.transform.position.y, z),
                             Quaternion.identity,
                             transform));
-
-           
+                    }
+                    else
+                    {
+                        lines.Add(Instantiate(lineObject,
+                            new Vector3(i, point.transform.position.y, z),
+                            Quaternion.identity,
+                            transform));
+                    }
+                        
                 }
             }
             else
             {
-                int start = deltaZ >  0 ? (int)point.transform.position.z : (int)endPoint.transform.position.z;
+                int start = deltaZ > 0 ? (int)point.transform.position.z : (int)endPoint.transform.position.z;
                 int end = deltaZ > 0 ? (int)endPoint.transform.position.z : (int)point.transform.position.z;
 
                 for (int i = start; i <= end; i++)
                 {
-                    lines.Add(Instantiate(lineObject,
-                            new Vector3(point.transform.position.x, point.transform.position.y, i),
-                            Quaternion.identity,
-                            transform));
+                    if (i == end)
+                    {
+                        lines.Add(Instantiate(endObject,
+                           new Vector3(point.transform.position.x, point.transform.position.y, i),
+                           Quaternion.identity,
+                           transform));
+                    }
+                    else
+                    {
+                        lines.Add(Instantiate(lineObject,
+                          new Vector3(point.transform.position.x, point.transform.position.y, i),
+                          Quaternion.identity,
+                          transform));
+                    }
+
                 }
 
 

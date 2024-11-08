@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2Int Direction;
 
     private CorridorPoint currentCorridor;
-    private CorridorPoint targetPoint;
+    public CorridorPoint targetPoint { private set; get; }
 
-    
+    public Queue<CorridorPoint> corridors = new();
 
     public void ReadyPlayer(CorridorPoint point)
     {
@@ -105,8 +106,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         if (targetPoint == null) return;
@@ -116,10 +115,19 @@ public class PlayerMovement : MonoBehaviour
         if(sqrDistance <= stoppingDistance)
         {
             currentCorridor = targetPoint;
+            corridors.Enqueue(currentCorridor);
             currentCorridor.OnPlayerArrive(this);
             targetPoint = null;
         }
     
+    }
+
+
+    public void Die()
+    {
+        OnPlayerDie.Invoke();
+        SceneManager.LoadScene(0);
+
     }
 
 
