@@ -19,6 +19,8 @@ public class Map : MonoBehaviour
 
     public float enemyDelay = 2f;
 
+    [SerializeField] Transform tileParent; 
+
     [HideInInspector]
     public List<GameObject> lines = new List<GameObject>();
 
@@ -82,14 +84,14 @@ public class Map : MonoBehaviour
                         lines.Add(Instantiate(endObject,
                             new Vector3(i, point.transform.position.y, z),
                             Quaternion.identity,
-                            transform));
+                            tileParent));
                     }
                     else
                     {
                         lines.Add(Instantiate(lineObject,
                             new Vector3(i, point.transform.position.y, z),
                             Quaternion.identity,
-                            transform));
+                            tileParent));
                     }
                         
                 }
@@ -106,14 +108,14 @@ public class Map : MonoBehaviour
                         lines.Add(Instantiate(endObject,
                            new Vector3(point.transform.position.x, point.transform.position.y, i),
                            Quaternion.identity,
-                           transform));
+                           tileParent));
                     }
                     else
                     {
                         lines.Add(Instantiate(lineObject,
                           new Vector3(point.transform.position.x, point.transform.position.y, i),
                           Quaternion.identity,
-                          transform));
+                          tileParent));
                     }
 
                 }
