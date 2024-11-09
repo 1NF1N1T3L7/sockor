@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    // Start is called before the first frame update
+    public AudioEffects audioEffects;
+
+    public int startDifficulty = 1;
     protected override  void Awake()
     {
         base.Awake();
@@ -14,6 +16,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         SceneChanger.Instance.NextLevel();
+        GameHardness.level = startDifficulty;
     }
 
 

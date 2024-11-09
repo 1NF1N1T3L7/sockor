@@ -16,19 +16,28 @@ public class PlayerMovement : MapTraverser
 
     public UnityEvent OnPlayerDie;
 
-
+    [SerializeField] float deathDelay = 2f;
 
     [SerializeField]
     float stoppingDistance = 0.01f;
 
     private Vector2Int Direction;
 
-    private CorridorPoint currentCorridor;
+    public CorridorPoint currentCorridor { private set; get; }
     public CorridorPoint targetPoint { private set; get; }
 
     public Queue<CorridorPoint> corridors = new();
 
     public UnityEvent OnPlayerStart = new();
+
+
+    private delegate void LastInput();
+    private LastInput lastInput;
+    private float inputTime;
+
+    [Header("Input Buffer")]
+
+    [SerializeField] private float bufferTime = 0.1f;
 
     public void ReadyPlayer(CorridorPoint point)
     {
@@ -69,7 +78,8 @@ public class PlayerMovement : MapTraverser
                 return;
             }
         }
-
+        lastInput = BufferedUp;
+        inputTime = Time.time;
     }
     private void TryMoveDown(InputAction.CallbackContext context)
     {
@@ -83,7 +93,8 @@ public class PlayerMovement : MapTraverser
                 return;
             }
         }
-
+        lastInput = BufferedDown;
+        inputTime = Time.time;
     }
     private void TryMoveLeft(InputAction.CallbackContext context)
     {
@@ -97,6 +108,8 @@ public class PlayerMovement : MapTraverser
                 return;
             }
         }
+        lastInput = BufferedLeft;
+        inputTime = Time.time;
     }
     private void TryMoveRight(InputAction.CallbackContext context)
     {
@@ -110,15 +123,79 @@ public class PlayerMovement : MapTraverser
                 return;
             }
         }
+        lastInput = BufferedRight;
+        inputTime = Time.time;
     }
+    //Lazy way
+    private void BufferedUp()
+    {
+        int x = currentCorridor.gridPosition.x;
+        int z = currentCorridor.gridPosition.z;
+        foreach (var target in currentCorridor.connectedPoints)
+        {
+            if (target.gridPosition.x == x && target.gridPosition.z > z)
+            {
+                targetPoint = target;
+                return;
+            }
+        }
+    }
+    private void BufferedDown()
+    {
+        int x = currentCorridor.gridPosition.x;
+        int z = currentCorridor.gridPosition.z;
+        foreach (var target in currentCorridor.connectedPoints)
+        {
+            if (target.gridPosition.x == x && target.gridPosition.z < z)
+            {
+                targetPoint = target;
+                return;
+            }
+        }
+    }
+    private void BufferedLeft()
+    {
+        int x = currentCorridor.gridPosition.x;
+        int z = currentCorridor.gridPosition.z;
+        foreach (var target in currentCorridor.connectedPoints)
+        {
+            if (target.gridPosition.z == z && target.gridPosition.x < x)
+            {
+                targetPoint = target;
+                return;
+            }
+        }
+    }
+    private void BufferedRight()
+    {
+        int x = currentCorridor.gridPosition.x;
+        int z = currentCorridor.gridPosition.z;
+        foreach (var target in currentCorridor.connectedPoints)
+        {
+            if (target.gridPosition.z == z && target.gridPosition.x > x)
+            {
+                targetPoint = target;
+                return;
+            }
+        }
+    }
+
+
 
     void Update()
     {
+        if(Time.time < bufferTime + inputTime)
+        {
+            
+            lastInput?.Invoke();
+        }
+
+
         if (targetPoint == null) return;
         Vector3 nextPosition = Vector3.MoveTowards(transform.position, targetPoint.gridPosition, movementSpeed * Time.deltaTime);
-        float sqrDistance = (transform.position - nextPosition).sqrMagnitude;
+        float distance = (transform.position - nextPosition).magnitude;
         transform.position = nextPosition;
-        if(sqrDistance <= stoppingDistance)
+        if(distance <= stoppingDistance)
         {
             currentCorridor = targetPoint;
             corridors.Enqueue(currentCorridor);
@@ -132,9 +209,16 @@ public class PlayerMovement : MapTraverser
 
     public void Die()
     {
+        this.enabled = false;
         OnPlayerDie.Invoke();
-        SceneManager.LoadScene(1);
+        StartCoroutine(DeathDelay());
 
+    }
+
+    IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(deathDelay);
+        SceneManager.LoadScene(1);
     }
 
 

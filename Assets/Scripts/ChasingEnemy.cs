@@ -10,7 +10,7 @@ public class ChasingEnemy : MapTraverser
 
     CorridorPoint targetPoint;
 
-    [Header("Speed")]
+
 
 
     [SerializeField]
@@ -19,6 +19,20 @@ public class ChasingEnemy : MapTraverser
 
     [SerializeField]
     float killDistance = 0.1f;
+
+    [SerializeField]
+    Animator animator;
+
+    [Header("Monster scaling")]
+    [SerializeField]
+    Transform difficultyScaledObject;
+    float scalingAmount;
+
+
+    private void Start()
+    {
+        difficultyScaledObject.transform.localScale *= scalingAmount * (GameHardness.level - 1); 
+    }
     internal void StartChasing(CorridorPoint start, PlayerMovement target)
     {
         SetSpeed();
@@ -45,33 +59,41 @@ public class ChasingEnemy : MapTraverser
     void Update()
     {
 
-
+       
 
         Vector3 nextPosition = Vector3.MoveTowards(transform.position, targetPoint.gridPosition, movementSpeed * Time.deltaTime);
 
-        float sqrDistanceCorridor = (transform.position - nextPosition).sqrMagnitude;
+        float DistanceCorridor = (transform.position - nextPosition).magnitude;
         float distanceToPlayer = (transform.position - player.transform.position).magnitude;
         transform.position = nextPosition;
         if (distanceToPlayer < killDistance)
         {
             player.Die();
+            
+            animator.SetTrigger("Eat");
+            this.enabled = false;
             return;
         }
 
        
 
-        if (sqrDistanceCorridor <= stoppingDistance)
+        if (DistanceCorridor <= stoppingDistance)
         {
 
             if (player.corridors.Count == 0)
             {
+                
                 targetPoint = player.targetPoint;
+                //if(targetPoint == null)
+                //{
+                //    targetPoint = player.currentCorridor;
+                //}
             }
             else
             {
                 targetPoint = player.corridors.Dequeue();
             }
-
+            transform.LookAt(targetPoint.gridPosition);
         }
 
         

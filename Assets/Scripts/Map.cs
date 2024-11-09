@@ -27,6 +27,8 @@ public class Map : MonoBehaviour
 
     public GameObject goalPoint;
 
+    public GameObject startPointPrefab;
+
     [SerializeField] GameObject lineRendererPrefab;
 
     [Header("Generated parents (OLD AUTO GENERATED GAMEOBJECST ARE DELETED ON GENERATE MAP)")]
@@ -39,10 +41,13 @@ public class Map : MonoBehaviour
     [HideInInspector]
     public List<GameObject> visualPoints = new List<GameObject>();
 
+    bool firstPoint;
+
     private IEnumerator Start()
     {
         player.transform.position = playerStart.transform.position;
         player.ReadyPlayer(playerStart);
+        GameManager.Instance.audioEffects.LoadMapSFX(this);
         yield return new WaitForSeconds(enemyDelay);
         enemy.StartChasing(playerStart, player);
 
@@ -64,6 +69,7 @@ public class Map : MonoBehaviour
             var world = grid.CellToWorld(cell);
             point.transform.position = world;
         }
+        firstPoint = true;
         foreach (var point in points)
         {
             GeneratePath(point);
@@ -74,11 +80,26 @@ public class Map : MonoBehaviour
 
     private void GeneratePath(CorridorPoint point)
     {
-        GameObject pointPrefab = PointToPrefab(point);
-        visualPoints.Add(Instantiate(pointPrefab,
-                           point.transform.position,
-                           Quaternion.identity,
-                           tileParent));
+        if (firstPoint && startPointPrefab != null)
+        {
+            visualPoints.Add(Instantiate(startPointPrefab,
+                              point.transform.position,
+                              Quaternion.identity,
+                              tileParent));
+        }
+        else
+        {
+            GameObject pointPrefab = PointToPrefab(point);
+            if (pointPrefab != null)
+            {
+                visualPoints.Add(Instantiate(pointPrefab,
+                              point.transform.position,
+                              Quaternion.identity,
+                              tileParent));
+            }
+
+        }
+
 
 
         foreach (var endPoint in point.connectedPoints)
@@ -158,7 +179,7 @@ public class Map : MonoBehaviour
 
     private GameObject PointToPrefab(CorridorPoint point)
     {
-        if(point is KillPoint)
+        if (point is KillPoint)
         {
             return killObject;
 
@@ -171,5 +192,5 @@ public class Map : MonoBehaviour
         return pointObject;
 
     }
-        
+
 }

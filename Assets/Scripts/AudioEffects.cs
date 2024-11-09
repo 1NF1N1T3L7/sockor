@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class AudioEffects : MonoBehaviour
 {
+    [Header("SFX")]
+    public AudioSource death;
+    public AudioSource corridor;
+
+   
+
     [Serializable]
     public class ClipWithTempo
     {
@@ -13,15 +19,37 @@ public class AudioEffects : MonoBehaviour
 
 
     }
+    [Header("Music")]
     public ClipWithTempo[] soundtracks;
     public AudioSource soundtrackSource;
 
+   
 
     void Start()
     {
         soundtrackSource.clip = soundtracks[0].clip;
         soundtrackSource.Play();
+
+       
     }
+    public void LoadMapSFX(Map map)
+    {
+        map.player.OnArriveAtCorridor.AddListener(CorridorSFX);
+        map.player.OnPlayerDie.AddListener(DeadSFX);
+    }
+
+    
+
+    private void CorridorSFX(CorridorPoint arg0)
+    {
+        corridor.Play();
+    }
+
+    private void DeadSFX()
+    {
+        death.Play();
+    }
+
 
     // Update is called once per frame
     void Update()
