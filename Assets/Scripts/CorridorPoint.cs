@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CorridorPoint : MonoBehaviour
 {
     public CorridorPoint[] connectedPoints;
 
+    CorridorPoint[] previusPoints;
+
     public Vector3Int gridPosition;
+
+
+
+
+    [Header("Events")]
+    public UnityEvent OnPlayerArriveEvent = new UnityEvent();
 
 
     public virtual void OnPlayerArrive(PlayerMovement player)
     {
-
-
-
+        OnPlayerArriveEvent.Invoke();  
     }
 
 #if UNITY_EDITOR
