@@ -53,9 +53,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 36be541e8f7bc07429093e8d065acbca, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 36be541e8f7bc07429093e8d065acbca, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2f9b29935e240274f8ffbc35e800f5c8, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 36be541e8f7bc07429093e8d065acbca, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ff0398f66f160c45ad8a24baf22f89a, type: 2}
     - target: {fileID: 919132149155446097, guid: 36be541e8f7bc07429093e8d065acbca, type: 3}
       propertyPath: m_Name
       value: PRE_Wires

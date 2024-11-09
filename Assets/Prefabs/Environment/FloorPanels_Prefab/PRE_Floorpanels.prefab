@@ -53,9 +53,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 4b7fcf89907ffdd418b6a65b7397374c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4b7fcf89907ffdd418b6a65b7397374c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5926148a3a7ee2643beccbdbd9205bfa, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 4b7fcf89907ffdd418b6a65b7397374c, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ff0398f66f160c45ad8a24baf22f89a, type: 2}
     - target: {fileID: 919132149155446097, guid: 4b7fcf89907ffdd418b6a65b7397374c, type: 3}
       propertyPath: m_Name
       value: PRE_Floorpanels
