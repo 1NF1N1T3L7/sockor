@@ -10,16 +10,19 @@ public class ChasingEnemy : MapTraverser
 
     CorridorPoint targetPoint;
 
-    public float speed = 10;
+    [Header("Speed")]
+
 
     [SerializeField]
     float stoppingDistance = 0.0001f;
+
 
     [SerializeField]
     float killDistance = 0.1f;
     internal void StartChasing(CorridorPoint start, PlayerMovement target)
     {
-       this.enabled = true;
+        SetSpeed();
+        this.enabled = true;
         player = target;
         //transform.position = start.transform.position;
 
@@ -44,7 +47,7 @@ public class ChasingEnemy : MapTraverser
 
 
 
-        Vector3 nextPosition = Vector3.MoveTowards(transform.position, targetPoint.gridPosition, speed * Time.deltaTime);
+        Vector3 nextPosition = Vector3.MoveTowards(transform.position, targetPoint.gridPosition, movementSpeed * Time.deltaTime);
 
         float sqrDistanceCorridor = (transform.position - nextPosition).sqrMagnitude;
         float distanceToPlayer = (transform.position - player.transform.position).magnitude;

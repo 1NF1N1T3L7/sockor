@@ -12,24 +12,24 @@ public class SceneChanger : MonoSingleton<SceneChanger>
     public void NextLevel()
     {
         currentScene++;
+
         if (currentScene >= SceneManager.sceneCount)
         {
-            MainMenu();
+            SceneManager.LoadScene(1);
+            currentScene = 1;
+            GameHardness.level++;
         }
         else
         {
             SceneManager.LoadScene(currentScene);
         }
 
-
-
-
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
-
+        GameHardness.level = 1;
 
     }
 

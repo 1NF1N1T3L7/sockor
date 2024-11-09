@@ -16,7 +16,7 @@ public class PlayerMovement : MapTraverser
 
     public UnityEvent OnPlayerDie;
 
-    public float speed = 1;
+
 
     [SerializeField]
     float stoppingDistance = 0.01f;
@@ -34,8 +34,12 @@ public class PlayerMovement : MapTraverser
     {
         currentCorridor = point;
         this.enabled = true;
+        SetSpeed();
         OnPlayerStart.Invoke();
+
     }
+
+   
 
     private void OnEnable()
     {
@@ -111,7 +115,7 @@ public class PlayerMovement : MapTraverser
     void Update()
     {
         if (targetPoint == null) return;
-        Vector3 nextPosition = Vector3.MoveTowards(transform.position, targetPoint.gridPosition, speed * Time.deltaTime);
+        Vector3 nextPosition = Vector3.MoveTowards(transform.position, targetPoint.gridPosition, movementSpeed * Time.deltaTime);
         float sqrDistance = (transform.position - nextPosition).sqrMagnitude;
         transform.position = nextPosition;
         if(sqrDistance <= stoppingDistance)
@@ -129,7 +133,7 @@ public class PlayerMovement : MapTraverser
     public void Die()
     {
         OnPlayerDie.Invoke();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
 
     }
 
