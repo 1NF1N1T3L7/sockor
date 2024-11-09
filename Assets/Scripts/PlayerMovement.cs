@@ -28,11 +28,15 @@ public class PlayerMovement : MonoBehaviour
 
     public Queue<CorridorPoint> corridors = new();
 
+    public UnityEvent<CorridorPoint> OnArriveAtCorridor = new();
+
+    public UnityEvent OnPlayerStart = new();
+
     public void ReadyPlayer(CorridorPoint point)
     {
         currentCorridor = point;
         this.enabled = true;
-
+        OnPlayerStart.Invoke();
     }
 
     private void OnEnable()
@@ -117,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
             currentCorridor = targetPoint;
             corridors.Enqueue(currentCorridor);
             currentCorridor.OnPlayerArrive(this);
+            OnArriveAtCorridor.Invoke(currentCorridor); 
             targetPoint = null;
         }
     
