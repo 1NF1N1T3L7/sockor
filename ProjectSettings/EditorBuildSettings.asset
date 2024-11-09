@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tuomo Scene.unity
     guid: d8651aa300a72a24b9456ab11f89fbe1
+  - enabled: 1
+    path: Assets/Scenes/Leveldesign Scene.unity
+    guid: d6b89244aa1086941a1cd07c27e68867
   m_configObjects: {}
