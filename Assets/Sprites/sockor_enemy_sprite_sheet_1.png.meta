@@ -1,0 +1,290 @@
+fileFormatVersion: 2
+guid: 6a81d3ca93da56f40b87bb5cfe67f1a5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sockor_enemy_sprite_sheet_1_0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 2167
+        width: 364
+        height: 220
+      alignment: 9
+      pivot: {x: 0.8642269, y: 0.5388794}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4826f47bff4d8a548a385c84b938d6c3
+      internalID: 540777632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sockor_enemy_sprite_sheet_1_1
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 2235
+        width: 309
+        height: 117
+      alignment: 9
+      pivot: {x: 0.920886, y: 0.5435927}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b5f07160f1a1d4e8b7a3974681237f
+      internalID: 1117866347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sockor_enemy_sprite_sheet_1_2
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2247
+        width: 306
+        height: 118
+      alignment: 9
+      pivot: {x: 0.815535, y: 0.47347558}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c175cf0a1c27046b179de9d1fdeb52
+      internalID: 594619336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sockor_enemy_sprite_sheet_1_3
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 1541
+        width: 603
+        height: 605
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b92da7fb7283724e937b1d1595887e3
+      internalID: -1560402928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sockor_enemy_sprite_sheet_1_4
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 1627
+        width: 247
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb47f2344f872e94f91256f00e130f54
+      internalID: -1447830341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sockor_enemy_sprite_sheet_1_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 1266
+        width: 301
+        height: 226
+      alignment: 9
+      pivot: {x: 0.9055388, y: 0.4723014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c31037a175fa84ca1f218a7dcbcbcb
+      internalID: -186999317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sockor_enemy_sprite_sheet_1_6
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1296
+        width: 277
+        height: 142
+      alignment: 9
+      pivot: {x: 0.8841784, y: 0.56612515}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc28614ebcc9d6747ac573aeb331513d
+      internalID: -360113625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sockor_enemy_sprite_sheet_1_7
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1327
+        width: 348
+        height: 126
+      alignment: 9
+      pivot: {x: 0.93171465, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e9f687ec4f0b2a42b19ea13fec155ab
+      internalID: 191933834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4586bd605f3e64c4196b38eb2347b570
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      sockor_enemy_sprite_sheet_1_0: 540777632
+      sockor_enemy_sprite_sheet_1_1: 1117866347
+      sockor_enemy_sprite_sheet_1_2: 594619336
+      sockor_enemy_sprite_sheet_1_3: -1560402928
+      sockor_enemy_sprite_sheet_1_4: -1447830341
+      sockor_enemy_sprite_sheet_1_5: -186999317
+      sockor_enemy_sprite_sheet_1_6: -360113625
+      sockor_enemy_sprite_sheet_1_7: 191933834
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
