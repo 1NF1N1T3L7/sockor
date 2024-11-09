@@ -163,6 +163,10 @@ public class Map : MonoBehaviour
             return killObject;
 
         }
+        if (point is GoalPoint)
+        {
+            return goalPoint;
+        }
 
         return pointObject;
 
