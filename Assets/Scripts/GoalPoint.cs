@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GoalPoint : CorridorPoint
 {
-    public virtual void OnPlayerArrive(PlayerMovement player)
+    public override void OnPlayerArrive(PlayerMovement player)
     {
         OnPlayerArriveEvent.Invoke();
-
+        SceneChanger.Instance.NextLevel();
     }
 }
