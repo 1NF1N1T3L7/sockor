@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MapTraverser
 {
 
     [SerializeField] InputAction up;
@@ -27,8 +27,6 @@ public class PlayerMovement : MonoBehaviour
     public CorridorPoint targetPoint { private set; get; }
 
     public Queue<CorridorPoint> corridors = new();
-
-    public UnityEvent<CorridorPoint> OnArriveAtCorridor = new();
 
     public UnityEvent OnPlayerStart = new();
 

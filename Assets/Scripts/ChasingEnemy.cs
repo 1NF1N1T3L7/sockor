@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChasingEnemy : MonoBehaviour
+public class ChasingEnemy : MapTraverser
 {
 
     PlayerMovement player;
