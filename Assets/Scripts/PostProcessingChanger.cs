@@ -17,8 +17,7 @@ public class PostProcessingChanger : MonoBehaviour
 
     ChromaticAberration chromatic;
 
-    [SerializeField]
-    [Range(0,1)]
+
     float minChromatic;
     [SerializeField]
     [Range(0, 1)]
@@ -31,7 +30,7 @@ public class PostProcessingChanger : MonoBehaviour
         player = map.player;
         enemy = map.enemy;
         volume.profile.TryGetSettings<ChromaticAberration>(out chromatic);
-
+        minChromatic = chromatic.intensity;
     }
 
     void UpdateDistance()
@@ -41,8 +40,17 @@ public class PostProcessingChanger : MonoBehaviour
         {
             distance = (player.transform.position - enemy.transform.position).magnitude;
         }
-        t = distance / weaksetEffectAt;
-        if(t > 1)  t = 1; 
+       
+        if (distance <= 0)
+        {
+            t = 0;
+        }
+        else
+        {
+            t = distance / weaksetEffectAt;
+            if (t > 1) t = 1;
+        }
+        print(t);
 
     }
 
@@ -56,7 +64,9 @@ public class PostProcessingChanger : MonoBehaviour
         UpdateDistance();
        if (chromatic != null)
         {
-            chromatic.intensity.value = Mathf.Lerp(minChromatic,maxChromatic, t );
+           
+            chromatic.intensity.value = Mathf.Lerp(maxChromatic, minChromatic,t);
+           
         }
     }
 }

@@ -7,8 +7,11 @@ public class GoalPoint : CorridorPoint
     public override void OnPlayerArrive(PlayerMovement player)
     {
         OnPlayerArriveEvent.Invoke();
+
         GameManager.Instance.audioEffects.WindSFX();
-      SceneChanger.Instance.NextLevel();
+       SceneChanger.Instance.NextLevel();
       
     }
+
+    
 }
