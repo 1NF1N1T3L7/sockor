@@ -16,12 +16,21 @@ public class PostProcessingChanger : MonoBehaviour
     public PostProcessVolume volume;
 
     ChromaticAberration chromatic;
-
+    Grain grain;
+    Vignette vignette;
 
     float minChromatic;
+    float minGrain;
+    float minVignette;
     [SerializeField]
     [Range(0, 1)]
     float maxChromatic;
+    [SerializeField]
+   
+    float maxGrain;
+    [SerializeField]
+    [Range(0, 1)]
+    float maxVignette;
     // Start is called before the first frame update
 
 
@@ -30,15 +39,33 @@ public class PostProcessingChanger : MonoBehaviour
         player = map.player;
         enemy = map.enemy;
         volume.profile.TryGetSettings<ChromaticAberration>(out chromatic);
+        volume.profile.TryGetSettings<Vignette>(out vignette);
+        volume.profile.TryGetSettings<Grain>(out grain);
         minChromatic = chromatic.intensity;
+        minGrain = grain.intensity;
+        minVignette = vignette.intensity;
     }
 
     void UpdateDistance()
     {
-        distance = player.corridors.Count * (player.transform.position - enemy.transform.position).magnitude;
+        if (enemy.sleeping)
+        {
+            t = 1;
+            return;
+        }
+        float dist = (player.transform.position - enemy.transform.position).magnitude;
+        if(dist < 1)
+        {
+            distance = player.corridors.Count;
+        }
+        else
+        {
+            distance = player.corridors.Count * dist;
+        }
+        
         if (distance == 0)
         {
-            distance = (player.transform.position - enemy.transform.position).magnitude;
+            distance = dist;
         }
        
         if (distance <= 0)
@@ -50,7 +77,7 @@ public class PostProcessingChanger : MonoBehaviour
             t = distance / weaksetEffectAt;
             if (t > 1) t = 1;
         }
-        print(t);
+
 
     }
 
@@ -62,11 +89,14 @@ public class PostProcessingChanger : MonoBehaviour
             Debug.LogError("Sockor errror: player or enemy missing from " + this);
         }
         UpdateDistance();
+ 
        if (chromatic != null)
         {
            
             chromatic.intensity.value = Mathf.Lerp(maxChromatic, minChromatic,t);
            
         }
+       vignette.intensity.value= Mathf.Lerp(maxVignette, minVignette, t);
+        grain.intensity.value = Mathf.Lerp(maxGrain, minGrain, t);
     }
 }

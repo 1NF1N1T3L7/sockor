@@ -373,12 +373,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlayerWin:
+    m_PersistentCalls:
+      m_Calls: []
+  IsAlive: 1
+  victoryDelay: 2
   deathDelay: 2
   stoppingDistance: 0.0001
   OnPlayerStart:
     m_PersistentCalls:
       m_Calls: []
   bufferTime: 0.1
+  animator: {fileID: 17087868625340060}
 --- !u!114 &2566896535147810225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +457,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1762b27bbfc0d044bb95cd629b1006a7, type: 3}
+--- !u!95 &17087868625340060 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8426808833007817164, guid: 1762b27bbfc0d044bb95cd629b1006a7, type: 3}
+  m_PrefabInstance: {fileID: 8416872217617356624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7899874081856946706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1832755250890134850, guid: 1762b27bbfc0d044bb95cd629b1006a7, type: 3}

@@ -28,6 +28,7 @@ public class ChasingEnemy : MapTraverser
     Transform difficultyScaledObject;
     [SerializeField] float scalingAmount;
 
+    public bool sleeping = true;
 
     private void Start()
     {
@@ -39,7 +40,7 @@ public class ChasingEnemy : MapTraverser
         SetSpeed();
         this.enabled = true;
         player = target;
-
+        sleeping = false;
         //transform.position = start.transform.position;
 
         //if (player.corridors.Count == 0)

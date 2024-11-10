@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 0}
-  weaksetEffectAt: 5
+  weaksetEffectAt: 10
   volume: {fileID: 0}
-  minChromatic: 0.155
-  maxChromatic: 0.835
+  maxChromatic: 0.812
+  maxGrain: 1.69
+  maxVignette: 0.405

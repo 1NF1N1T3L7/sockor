@@ -43,6 +43,9 @@ public class PlayerMovement : MapTraverser
 
     [SerializeField] private float bufferTime = 0.1f;
 
+    [SerializeField] Animator animator;
+
+
     public void ReadyPlayer(CorridorPoint point)
     {
         currentCorridor = point;
@@ -50,7 +53,7 @@ public class PlayerMovement : MapTraverser
         SetSpeed();
         OnPlayerStart.Invoke();
         OnPlayerWin.AddListener(() => StartCoroutine(VictoryDelay()));
-
+        OnPlayerWin.AddListener(() => animator.SetInteger("Dir",0));
     }
 
    
@@ -80,10 +83,12 @@ public class PlayerMovement : MapTraverser
             if(target.gridPosition.x == x && target.gridPosition.z > z)
             {
                 targetPoint = target;
+                animator.SetInteger("Dir", 1);
                 return;
             }
         }
         lastInput = BufferedUp;
+
         inputTime = Time.time;
     }
     private void TryMoveDown(InputAction.CallbackContext context)
@@ -95,10 +100,12 @@ public class PlayerMovement : MapTraverser
             if (target.gridPosition.x == x && target.gridPosition.z < z)
             {
                 targetPoint = target;
+                animator.SetInteger("Dir", 3);
                 return;
             }
         }
         lastInput = BufferedDown;
+
         inputTime = Time.time;
     }
     private void TryMoveLeft(InputAction.CallbackContext context)
@@ -110,6 +117,7 @@ public class PlayerMovement : MapTraverser
             if (target.gridPosition.z == z && target.gridPosition.x < x)
             {
                 targetPoint = target;
+                animator.SetInteger("Dir", 4);
                 return;
             }
         }
@@ -125,6 +133,7 @@ public class PlayerMovement : MapTraverser
             if (target.gridPosition.z == z && target.gridPosition.x > x)
             {
                 targetPoint = target;
+                animator.SetInteger("Dir", 2);
                 return;
             }
         }
@@ -141,6 +150,7 @@ public class PlayerMovement : MapTraverser
             if (target.gridPosition.x == x && target.gridPosition.z > z)
             {
                 targetPoint = target;
+                animator.SetInteger("Dir", 1);
                 return;
             }
         }
@@ -154,6 +164,7 @@ public class PlayerMovement : MapTraverser
             if (target.gridPosition.x == x && target.gridPosition.z < z)
             {
                 targetPoint = target;
+                animator.SetInteger("Dir", 3);
                 return;
             }
         }
@@ -167,6 +178,7 @@ public class PlayerMovement : MapTraverser
             if (target.gridPosition.z == z && target.gridPosition.x < x)
             {
                 targetPoint = target;
+                animator.SetInteger("Dir", 4);
                 return;
             }
         }
@@ -180,6 +192,7 @@ public class PlayerMovement : MapTraverser
             if (target.gridPosition.z == z && target.gridPosition.x > x)
             {
                 targetPoint = target;
+                animator.SetInteger("Dir", 2);
                 return;
             }
         }
@@ -225,6 +238,7 @@ public class PlayerMovement : MapTraverser
         IsAlive = false;
         yield return new WaitForSeconds(deathDelay);
         SceneManager.LoadScene(1);
+        GameHardness.level = 1;
     }
     IEnumerator VictoryDelay()
     {

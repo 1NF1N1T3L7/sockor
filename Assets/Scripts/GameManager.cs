@@ -15,9 +15,15 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        SceneChanger.Instance.NextLevel();
-        GameHardness.level = startDifficulty;
+        
     }
 
+
+    public void StartGame()
+    {
+        SceneChanger.Instance.NextLevel();
+        GameHardness.level = startDifficulty;
+
+    }
 
 }
