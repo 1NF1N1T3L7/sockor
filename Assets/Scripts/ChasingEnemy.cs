@@ -26,12 +26,12 @@ public class ChasingEnemy : MapTraverser
     [Header("Monster scaling")]
     [SerializeField]
     Transform difficultyScaledObject;
-    float scalingAmount;
+    [SerializeField] float scalingAmount;
 
 
     private void Start()
     {
-        difficultyScaledObject.transform.localScale *= scalingAmount * (GameHardness.level - 1); 
+        difficultyScaledObject.transform.localScale += difficultyScaledObject.transform.localScale * scalingAmount * (GameHardness.level - 1); 
     }
     internal void StartChasing(CorridorPoint start, PlayerMovement target)
     {

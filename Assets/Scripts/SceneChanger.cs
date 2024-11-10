@@ -13,7 +13,7 @@ public class SceneChanger : MonoSingleton<SceneChanger>
     {
         currentScene++;
 
-        if (currentScene >= SceneManager.sceneCount)
+        if (currentScene >= SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(1);
             currentScene = 1;

@@ -163,6 +163,7 @@ MonoBehaviour:
   killDistance: 0.1
   animator: {fileID: 3507296890912217745}
   difficultyScaledObject: {fileID: 4762955795058604890}
+  scalingAmount: 1
 --- !u!1001 &8241312616948326130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,11 +194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3478587773734970792, guid: e002e6471d017e94aaba04c9339f9fa7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 3478587773734970792, guid: e002e6471d017e94aaba04c9339f9fa7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.95
+      value: -1.49
       objectReference: {fileID: 0}
     - target: {fileID: 3478587773734970792, guid: e002e6471d017e94aaba04c9339f9fa7, type: 3}
       propertyPath: m_LocalRotation.w

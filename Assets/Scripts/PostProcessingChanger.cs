@@ -5,9 +5,9 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class PostProcessingChanger : MonoBehaviour
 {
-
-    [SerializeField] PlayerMovement player;
-    [SerializeField] ChasingEnemy enemy;
+    [SerializeField] Map map;
+    PlayerMovement player;
+    ChasingEnemy enemy;
     [SerializeField] float weaksetEffectAt = 5f;
     float distance;
     float t;
@@ -26,12 +26,12 @@ public class PostProcessingChanger : MonoBehaviour
     // Start is called before the first frame update
 
 
-    void Start()
+    void Awake()
     {
+        player = map.player;
+        enemy = map.enemy;
         volume.profile.TryGetSettings<ChromaticAberration>(out chromatic);
 
-        
-        
     }
 
     void UpdateDistance()
@@ -49,6 +49,10 @@ public class PostProcessingChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(player == null ||enemy == null)
+        {
+            Debug.LogError("Sockor errror: player or enemy missing from " + this);
+        }
         UpdateDistance();
        if (chromatic != null)
         {

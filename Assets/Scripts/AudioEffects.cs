@@ -8,8 +8,8 @@ public class AudioEffects : MonoBehaviour
     [Header("SFX")]
     public AudioSource death;
     public AudioSource corridor;
+    public AudioSource win;
 
-   
 
     [Serializable]
     public class ClipWithTempo
@@ -49,7 +49,10 @@ public class AudioEffects : MonoBehaviour
     {
         death.Play();
     }
-
+    public void WindSFX()
+    {
+        win.Play();
+    }
 
     // Update is called once per frame
     void Update()
