@@ -310,7 +310,7 @@ MonoBehaviour:
   soundtracks:
   - clip: {fileID: 8300000, guid: 14ee0bb7c4cff0847ba2d663e8022b29, type: 3}
     level: 1
-  - clip: {fileID: 8300000, guid: 6044d57321d7cbc4e81fb87178f0c6e2, type: 3}
+  - clip: {fileID: 8300000, guid: 3ccd123c231d6744889bdd815f015ff1, type: 3}
     level: 2
   - clip: {fileID: 8300000, guid: 0c42c237f13e63348ac2d2cc2241126f, type: 3}
     level: 3
