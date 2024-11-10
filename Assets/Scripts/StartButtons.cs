@@ -19,4 +19,10 @@ public class StartButtons : MonoBehaviour
         enter.Disable();
     }
 
+    public void StartGame()
+    {
+        GameManager.Instance.StartGame();   
+
+    }
+
 }

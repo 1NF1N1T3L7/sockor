@@ -373,6 +373,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873845206}
   m_CullTransparentMesh: 1
+--- !u!1 &878997368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8732505998309173846, guid: 0e0f0eecf1af2a74f96bbc0a7cbb4575, type: 3}
+  m_PrefabInstance: {fileID: 1251549684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &945130119
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,19 +644,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8732505998309173846, guid: 0e0f0eecf1af2a74f96bbc0a7cbb4575, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1251549689}
   m_SourcePrefab: {fileID: 100100000, guid: 0e0f0eecf1af2a74f96bbc0a7cbb4575, type: 3}
---- !u!114 &1251549686 stripped
+--- !u!114 &1251549689
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7071953137380745791, guid: 0e0f0eecf1af2a74f96bbc0a7cbb4575, type: 3}
-  m_PrefabInstance: {fileID: 1251549684}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 878997368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c17d23e72778419489f36d98ca78e3c0, type: 3}
+  m_Script: {fileID: 11500000, guid: ceed1757751d4d244874c083fd742062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu:
+    m_Name: Menu
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: cc26fa98-9071-487c-831c-155f7ef20be1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b80c5b0f-b01b-4cb4-b79d-eaf8211b303c
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Menu
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &1663354449
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +735,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Controls: WASD or Arrow'
+  m_text: 'Controls: WASD or Arrows
+
+
+    <size=80%>Esc to quit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab0847b183fa7b947ae104a2aef0d624, type: 2}
   m_sharedMaterial: {fileID: 4466581963546125004, guid: ab0847b183fa7b947ae104a2aef0d624, type: 2}
@@ -1081,8 +1110,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1251549686}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 945130124}
+        m_TargetAssemblyTypeName: StartButtons, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:

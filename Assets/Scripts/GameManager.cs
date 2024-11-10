@@ -21,8 +21,9 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void StartGame()
     {
-        SceneChanger.Instance.NextLevel();
         GameHardness.level = startDifficulty;
+        SceneChanger.Instance.SelectLevel(1);
+        
 
     }
 

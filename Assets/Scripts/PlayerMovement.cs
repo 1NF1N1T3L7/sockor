@@ -73,6 +73,13 @@ public class PlayerMovement : MapTraverser
         right.Enable();
     }
 
+    private void OnDisable()
+    {
+        up.Disable();
+        down.Disable();
+        left.Disable();
+        right.Disable();
+    }
 
     private void TryMoveUp(InputAction.CallbackContext context)
     {
