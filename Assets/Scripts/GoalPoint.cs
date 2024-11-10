@@ -9,7 +9,8 @@ public class GoalPoint : CorridorPoint
         OnPlayerArriveEvent.Invoke();
 
         GameManager.Instance.audioEffects.WindSFX();
-       SceneChanger.Instance.NextLevel();
+        player.OnPlayerWin.Invoke();
+
       
     }
 

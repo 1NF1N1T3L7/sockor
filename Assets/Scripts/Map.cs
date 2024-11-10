@@ -48,6 +48,8 @@ public class Map : MonoBehaviour
         player.transform.position = playerStart.transform.position;
         player.ReadyPlayer(playerStart);
         GameManager.Instance.audioEffects.LoadMapSFX(this);
+
+
         yield return new WaitForSeconds(enemyDelay);
         enemy.StartChasing(playerStart, player);
 

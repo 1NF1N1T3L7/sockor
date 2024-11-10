@@ -35,9 +35,11 @@ public class ChasingEnemy : MapTraverser
     }
     internal void StartChasing(CorridorPoint start, PlayerMovement target)
     {
+        if (!target.IsAlive) return;
         SetSpeed();
         this.enabled = true;
         player = target;
+
         //transform.position = start.transform.position;
 
         //if (player.corridors.Count == 0)
@@ -52,6 +54,8 @@ public class ChasingEnemy : MapTraverser
         //{
         //    targetPoint = player.corridors.Dequeue();
         //}
+        player.OnPlayerDie.AddListener(() => this.enabled = false);
+        player.OnPlayerWin.AddListener(PlayerWin);
         targetPoint = start;
     }
 
@@ -82,7 +86,6 @@ public class ChasingEnemy : MapTraverser
 
             if (player.corridors.Count == 0)
             {
-                
                 targetPoint = player.targetPoint;
                 //if(targetPoint == null)
                 //{
@@ -97,5 +100,10 @@ public class ChasingEnemy : MapTraverser
         }
 
         
+    }
+    void PlayerWin()
+    {
+        this.enabled = false;
+        animator.SetTrigger("Anger");
     }
 }

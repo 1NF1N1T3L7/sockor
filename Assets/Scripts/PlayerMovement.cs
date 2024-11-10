@@ -15,7 +15,11 @@ public class PlayerMovement : MapTraverser
     [SerializeField] InputAction right;
 
     public UnityEvent OnPlayerDie;
+    public UnityEvent OnPlayerWin;
 
+    public bool IsAlive = true;
+
+    [SerializeField] float victoryDelay = 2f;
     [SerializeField] float deathDelay = 2f;
 
     [SerializeField]
@@ -45,6 +49,7 @@ public class PlayerMovement : MapTraverser
         this.enabled = true;
         SetSpeed();
         OnPlayerStart.Invoke();
+        OnPlayerWin.AddListener(() => StartCoroutine(VictoryDelay()));
 
     }
 
@@ -217,11 +222,18 @@ public class PlayerMovement : MapTraverser
 
     IEnumerator DeathDelay()
     {
+        IsAlive = false;
         yield return new WaitForSeconds(deathDelay);
         SceneManager.LoadScene(1);
     }
-
-
+    IEnumerator VictoryDelay()
+    {
+        yield return new WaitForSeconds(victoryDelay);
+        SceneChanger.Instance.NextLevel();
+        IsAlive = false;
+    }
+   
+      
 
 
 
